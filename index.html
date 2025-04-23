@@ -1,0 +1,104 @@
+<!-- 
+ 
+this code was for the first example challenge - as it was mostly copy and pasting it doesnt seem worth creating a new file for the next project
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple DOM example</title>
+    <style>
+        .highlight {
+          color: white;
+          background-color: black;
+          padding: 10px;
+          width: 250px;
+          text-align: center;
+        }
+      </style>
+  </head>
+  <body>
+      <section>
+        <img src="https://raw.githubusercontent.com/mdn/learning-area/refs/heads/main/javascript/apis/document-manipulation/dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <script>
+        const link = document.querySelector("a");
+        link.textContent = "Mozilla Developer Network";
+        link.href = "https://developer.mozilla.org";
+        const sect = document.querySelector("section");
+        const para = document.createElement("p");
+        para.textContent = "We hope you enjoyed the ride.";
+        sect.appendChild(para);
+        const text = document.createTextNode(
+            " — the premier source for web development knowledge.",
+        );
+        const linkPara = document.querySelector("p");
+        linkPara.appendChild(text);
+        sect.appendChild(linkPara);
+        para.setAttribute("class", "highlight");
+      </script>
+  </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        const list = document.querySelector("ul");
+        const text = document.querySelector("input")
+        const button = document.querySelector("button")
+
+        button.addEventListener("click", () => {
+            let ingredient = text.value
+            text.value = ""
+
+            const listItem = document.createElement('li');
+            const listText = document.createElement('div');
+            const listButton = document.createElement('button');
+
+            listText.textContent = ingredient;
+            listItem.appendChild(listText);
+            listButton.textContent = "Remove";
+            listItem.appendChild(listButton);
+            list.appendChild(listItem);
+            
+            listButton.addEventListener("click", () => {
+                list.removeChild(listItem);
+            });
+
+        });
+</script>
+  </body>
+</html>
